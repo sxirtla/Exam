@@ -1,0 +1,17 @@
+.employee tr {
+  cursor: pointer;
+}
+
+  .employee tr.selected {
+    cursor: pointer;
+    background-color: #afdaaf;
+  }
+
+  .employee tr:hover {
+    background-color: #bd9999;
+  }
+
+
+.tasks tr {
+    cursor: pointer;
+}

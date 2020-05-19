@@ -1,0 +1,42 @@
+<p *ngIf="!employees"><em>Loading...</em></p>
+
+<button class="btn btn-success" (click)="OpenEmployeeDialog()">Create Employee</button>
+<button class="btn btn-success float-md-right"  (click)="OpenTaskDialog()">Create Task</button>
+<div class="flex-row mt-4">
+  <table class='employee table table-striped col-md-5' aria-labelledby="tableLabel" *ngIf="employees">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th class="text-right" width="30%">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees" [ngClass]="{'selected': employee.id == selectedEmployee }">
+        <td (click)="showTasks(employee.id)">{{ employee.name }}</td>
+        <td class="text-right" ><button class="btn btn-sm btn-outline-info mr-1" (click)="EditEmployee(employee.id)">Edit</button>
+            <button class="btn btn-sm btn-outline-danger" (click)="DeleteEmployee(employee.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class='tasks table table-striped col-md-5 offset-md-2' aria-labelledby="tableLabel" *ngIf="tasks">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Priority</th>
+        <th class="text-right" width="30%">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td (click)="OpenTaskDialog(task.id)">{{ task.title }}</td>
+        <td (click)="OpenTaskDialog(task.id)">{{ Priority[task.priority] }}</td>
+        <td class="text-right">
+          <button class="btn btn-sm btn-outline-danger" (click)="DeleteTask(task.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<employee-dialog></employee-dialog>
+<task-dialog></task-dialog>

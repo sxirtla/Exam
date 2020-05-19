@@ -1,0 +1,32 @@
+<div *ngIf="IsShow" class="popup-wrapper">
+  <div class="popup">
+    <a (click)="OnCloseClick()" class="close"></a>
+
+    <div class="flex-row popup-title">
+      Employee
+    </div>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+      <div class="field flex-row">
+        <label>Name</label>
+        <div class="input">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Name" formControlName="Name" value="{{employee.name}}">
+          </div>
+        </div>
+      </div>
+      <div *ngIf="formError" class="error text-danger">
+        {{ formError }}
+      </div>
+      <div class="modal-footer mt-4">
+        <div>
+          <button class="btn btn-default" (click)="OnCloseClick()">
+            Close
+          </button>
+          <button type="submit" class="btn btn-success">
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
